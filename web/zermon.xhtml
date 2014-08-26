@@ -29,6 +29,11 @@
                     #{com}<br/>
                 </ui:repeat>
             </h:column>
+            <h:column>
+                <h:link value="Delete this post" outcome="delete">
+                <f:param name="index" value="#{post.id}"/>
+                </h:link>
+            </h:column>
 
         </h:dataTable>
         <h:link value="New post" outcome="newpost"/>
