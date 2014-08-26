@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Make a new post</title>
+    </h:head>
+    <h:body>
+        ohhhh here we go
+        <h1>Make a new post</h1>
+        <h:form>
+            <p>
+                <label> Post title:
+                    <h:inputText id="title"
+                                 value="#{postController.post.title}"
+                                 validatorMessage="Must have a title"/>
+                </label>
+                <h:message for="title"/>
+            </p>
+            <p>
+                <label> post tags
+                    <h:inputText id="tags"
+                                 value="#{postController.post.tags}"
+                                 validatorMessage="must have at least something"/>
+                </label>
+                <h:message for="tags"/>
+            </p>
+            <p><label> Content
+                    <h:inputText id="content"
+                                 value="#{postController.post.content}"
+                                 validatorMessage="must have some content" />
+                </label>
+                <h:message for="content"/>
+            </p>
+             <p>
+                 <h:commandButton value="Save" action="#{postController.saveAsNew}"/>
+            </p>
+        </h:form>
+    </h:body>
+</html>
+
