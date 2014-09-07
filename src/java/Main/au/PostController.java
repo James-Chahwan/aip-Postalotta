@@ -21,12 +21,18 @@ public class PostController implements Serializable {
 
     private Post post = new Post();
 
-   public Post getPost()
-   {
+   public Post getPost(){
        return post;
    }
+   
+   public String bentest() {
+       System.out.println("ben says hi");
+       return null;
+   }
+   
    public void loadPost(int index){
-       post=FakeDatabase.read(index);
+       System.out.println(index + "Posts COntroller  INDEX");
+       post = FakeDatabase.read(index);
    }
    public String saveAsNew()
    {
@@ -36,6 +42,7 @@ public class PostController implements Serializable {
         
    public String delete()
    {
+       System.out.println("post controller DELETE ");
        FakeDatabase.delete(post.getId());
        return "zermon?faces-redirect=true";
    }
@@ -44,4 +51,6 @@ public class PostController implements Serializable {
        FakeDatabase.update(post);
        return "zermon?faces-redirect=true";
    }
+   
+
 }

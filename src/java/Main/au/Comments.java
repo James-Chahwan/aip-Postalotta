@@ -15,6 +15,7 @@ import java.io.*;
  */
 public class Comments implements Serializable {
     private int id;
+    private int PostID;
     private String user;
     private String content; 
 

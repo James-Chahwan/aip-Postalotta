@@ -21,14 +21,7 @@
                 </f:facet>
                 <h:outputText value="#{post.content}" /> 
             </h:column>
-            <h:column>
-                <f:facet name="header">
-                    comments 
-                </f:facet>
-                <ui:repeat value="#{post.AllComments()}" var="com">
-                    #{com}<br/>
-                </ui:repeat>
-            </h:column>
+           
             <h:column>
                 <h:link value="Delete this post" outcome="delete">
                 <f:param name="index" value="#{post.id}"/>

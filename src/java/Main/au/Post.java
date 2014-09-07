@@ -19,8 +19,7 @@ public class Post implements Serializable  {
     private String title;
     private String tags;
     private String content;
-    private ArrayList<Comments> ComList = new ArrayList<Comments>();
-
+    
 //        public Post()
 //    {
 //    }
@@ -78,19 +77,6 @@ public class Post implements Serializable  {
 //        return "Post{" + "id=" + id + ", title=" + title + ", tags=" + tags + ", content=" + content + ", ComList=" + ComList + '}';
 //    }
     
-    public ArrayList AllComments()
-    {
-        Comments comment = new Comments();
-        comment.setUser("SomeGuy");
-        comment.setContent("jdkfjdklsfjlkdf omgh it's so cool");
-        ComList.add(comment);
-        ComList.add(comment);
-        ComList.add(comment);
-        ComList.add(comment);
-        ComList.add(comment);
-       return ComList;
-    }
-    
-    
+   
 }
 
