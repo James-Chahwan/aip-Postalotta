@@ -7,37 +7,36 @@
 package Main.au;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.*;
 import javax.validation.constraints.*;
 
 /**
- *
+ * this is the DTO for posts
  * @author james
  */
 public class Post implements Serializable  {
     private int id; 
     private String title;
-    private String tags;
     private String content;
+    private int USERID;
+    private String UserName;
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String UserName) {
+        this.UserName = UserName;
+    }
     
-//        public Post()
-//    {
-//    }
-//    public Post(int id, String title, String tags, String content) {
-//        this.id = id;
-//        this.title = title;
-//        this.tags = tags;
-//        this.content = content;
-//    }
-//    
-//    public void test()
-//    {
-//        Post lol = new Post(1, "lol", "hashtag faggot","content sucks balls");
-//        Comments comfag = new Comments(1, "jewbag", "eat a dick anon");
-//        lol.ComList.add(comfag);
-//        
-//    }
-  
+    public int getUSERID() {
+        return USERID;
+    }
+
+    public void setUSERID(int USERID) {
+        this.USERID = USERID;
+    }
+      
 
     
     public int getId() {
@@ -55,14 +54,7 @@ public class Post implements Serializable  {
     public void setTitle(String title) {
         this.title = title;
     }
-    @Size (min = 2)
-    public String getTags() {
-        return tags;
-    }
 
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
 
     public String getContent() {
         return content;
@@ -72,10 +64,7 @@ public class Post implements Serializable  {
         this.content = content;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Post{" + "id=" + id + ", title=" + title + ", tags=" + tags + ", content=" + content + ", ComList=" + ComList + '}';
-//    }
+
     
    
 }
