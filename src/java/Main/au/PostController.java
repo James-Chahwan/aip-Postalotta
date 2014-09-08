@@ -32,7 +32,7 @@ public class PostController  {
       private String UserName; 
   
 public ArrayList<Post> getAllPosts() throws DataStoreException {
-        System.out.println("this method in post controller has been called");
+//          System.out.println("this method in post controller has been called");
         return new PostDAO().findAll();
 }
 public String FUCK(){

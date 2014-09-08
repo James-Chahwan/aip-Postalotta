@@ -44,9 +44,12 @@ public class PostDAO {
                  Statement stmt = conn.createStatement();
                  ResultSet rs = stmt.executeQuery(ALL_POSTS))
                 {
+                    System.out.println("before the loop");
+                    System.out.println(rs.next()== true);
                     while(rs.next())
                     {
                         posts.add(createRowDTO(rs));
+                        System.out.println("inside the loop");
                         System.out.println(posts.toString());
                     }     
                    

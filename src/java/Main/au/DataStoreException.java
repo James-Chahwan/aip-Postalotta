@@ -1,4 +1,4 @@
-package au.edu.uts.aip.accounts;
+package Main.au;
 
 /**
  * Thrown by the Account Data Access Object if a problem occurs in communicating
