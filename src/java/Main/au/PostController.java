@@ -32,14 +32,35 @@ public class PostController  {
       private String UserName; 
   
 public ArrayList<Post> getAllPosts() throws DataStoreException {
-//          System.out.println("this method in post controller has been called");
+
         return new PostDAO().findAll();
 }
-public String FUCK(){
-    System.out.println("im fucking worried");
-    return null;
+public ArrayList<Post> getUserPosts() throws DataStoreException {
+         FacesContext context = FacesContext.getCurrentInstance();
+    String uname = context.getExternalContext().getUserPrincipal().getName();
+        return new PostDAO().findUserPosts(uname);
+}
+public ArrayList<Post> getUserPost(int postid) throws DataStoreException {
+        return new PostDAO().findPost(postid);
 }
 
+public String createPost() throws DataStoreException
+{
+    FacesContext context = FacesContext.getCurrentInstance();
+    String uname = context.getExternalContext().getUserPrincipal().getName();
+    new PostDAO().newPost(title, content,uname );
+    return "zermon?faces-redirect=true";
+}
+
+public void deletePost(int postid) throws DataStoreException
+{
+    new PostDAO().deletePost(postid);
+}
+
+public void editPost(int postid) throws DataStoreException
+{
+    new PostDAO().editPost(title, content, postid);
+}
 //   public Post getPost(){
 //       return post;
 //   }

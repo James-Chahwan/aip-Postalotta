@@ -8,7 +8,8 @@
         <title>post a lotta stuff </title>
     </h:head>
     <h:body>
-        <h:dataTable var="row"  value="#{postController.allPosts}">
+        <h:form>
+        <h:dataTable var="row"  value="#{postController.userPosts}">
             <h:column>
                 <f:facet name="header">
                   title
@@ -21,28 +22,17 @@
                 </f:facet>
                 <h:outputText value="#{row.content}" /> 
             </h:column>
-              <h:column>
+            <h:column>
                 <f:facet name="header">
-                     Username 
+                  Modify/delete
                 </f:facet>
-                  <h:outputText value="#{row.userName}" /> 
+                <h:link value="Edit" outcome="edit">
+                    <f:param name="index" value="#{row.id}"/>
+                </h:link>
+                <h:commandButton value="delete post" action="#{postController.deletePost(row.id)}"/>
             </h:column>
-           
-            
         </h:dataTable>
-         
-        <p> Make new post here
-        manage your account
-        
-        </p>
-        <p> fix the layout </p>
-         and a log out button here
-         <h:form>
-          <p>
-              <h:commandButton value="Log out" action="#{accountController.logoutContainer}"/>
-              <h:link outcome="newpost.xhtml"> new post  </h:link>
-              <h:link outcome="postmanagement.xhtml"> Manage your posts  </h:link>
-          </p>
-             </h:form>
+        </h:form>
     </h:body>
 </html>
+

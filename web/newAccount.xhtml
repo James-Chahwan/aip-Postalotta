@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Make a new account</title>
+    </h:head>
+    <h:body>
+        ohhhh here we go
+        <h1>Make a new account</h1>
+        <h:form>
+            <p>
+                <label> username:
+                    <h:inputText id="username"
+                                 value="#{accountController.username}"
+                                 validatorMessage="JAMES DONT FORGET TO VALIDATE"/>
+                </label>
+                <h:message for="title"/>
+            </p>
+            <p>
+                <label> password:
+                    <h:inputText id="password"
+                                 value="#{accountController.password}"
+                                 validatorMessage="must have at least something"/>
+                </label>
+                <h:message for="tags"/>
+            </p>
+            
+             <p>
+                 <h:commandButton value="create account" action="#{accountController.createAccount()}"/>
+            </p>
+        </h:form>
+    </h:body>
+</html>
+
+
+
