@@ -1,4 +1,8 @@
 /* was user but is special name ? */
+
+/* same pattern */
+drop view jdbcrealm_user;
+drop view jdbcrealm_group; 
 /* drop tables first incase */
 drop table account;
 drop table post;  
@@ -12,11 +16,18 @@ CREATE TABLE Account(
     PASSWORD VARCHAR(255)
 );
  
-CREATE TABLE POST (POSTID INTEGER DEFAULT AUTOINCREMENT: start 1 increment 1  NOT NULL GENERATED ALWAYS AS IDENTITY, TITLE VARCHAR(100), CONTENT VARCHAR(500), USERID INTEGER NOT NULL, LIKES INTEGER DEFAULT 0 , PRIMARY KEY (POSTID));
+CREATE TABLE post(
+ POSTID INTEGER not null primary key
+ GENERATED ALWAYS AS IDENTITY
+ (START WITH 1, INCREMENT BY 1),
+ TITLE VARCHAR(100),
+ CONTENT VARCHAR(500),
+ USERID INTEGER NOT NULL,
+ LIKES INTEGER DEFAULT 0,
+ FOREIGN KEY (USERID) REFERENCES Account(USERID)
+);
 
-/* same pattern */
-drop view jdbcrealm_user;
-drop view jdbcrealm_group;  
+ 
 
 create view jdbcrealm_user (username, password) as
 select username, password
