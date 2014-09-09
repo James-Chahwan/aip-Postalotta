@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Main.au;
 
 import java.io.*;
@@ -12,10 +11,12 @@ import javax.validation.constraints.*;
 
 /**
  * this is the DTO for posts
+ * just getters and setters in here seriously....
  * @author james
  */
-public class Post implements Serializable  {
-    private int id; 
+public class Post implements Serializable {
+
+    private int id;
     private String title;
     private String content;
     private int USERID;
@@ -37,7 +38,7 @@ public class Post implements Serializable  {
     public void setUserName(String UserName) {
         this.UserName = UserName;
     }
-    
+
     public int getUSERID() {
         return USERID;
     }
@@ -45,9 +46,7 @@ public class Post implements Serializable  {
     public void setUSERID(int USERID) {
         this.USERID = USERID;
     }
-      
 
-    
     public int getId() {
         return id;
     }
@@ -64,7 +63,6 @@ public class Post implements Serializable  {
         this.title = title;
     }
 
-
     public String getContent() {
         return content;
     }
@@ -73,8 +71,4 @@ public class Post implements Serializable  {
         this.content = content;
     }
 
-
-    
-   
 }
-

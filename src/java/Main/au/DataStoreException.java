@@ -4,6 +4,8 @@ package Main.au;
  * Thrown by the Account Data Access Object if a problem occurs in communicating
  * with the underlying persistence mechanism (i.e., an SQL exception or a JNDI 
  * naming exception).
+ * from the labs
+ * HELPS ALOT 
  */
 public class DataStoreException extends Exception {
     
