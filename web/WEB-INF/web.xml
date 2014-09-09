@@ -33,6 +33,10 @@
             <description/>
             <url-pattern>/faces/zermon.xhtml</url-pattern>
             <url-pattern>/faces/secret/*</url-pattern>
+            <url-pattern>/faces/edi.xhtml</url-pattern>
+            <url-pattern>/faces/newpost.xtml</url-pattern>
+            <url-pattern>/faces/postmanagement.xhtml</url-pattern>
+            <url-pattern>/faces/edit.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>Users</role-name>
