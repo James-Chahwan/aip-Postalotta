@@ -1,21 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>Make a new account</title>
+  <title>Post a lotta stuff</title>
     </h:head>
     <h:body>
-        ohhhh here we go
+        <b:container>
+        
         <h1>Make a new account</h1>
         <h:form>
             <p>
-                <label> username:
+                <label> username:  
                     <h:inputText id="username"
                                  value="#{accountController.username}"
-                                 validatorMessage="JAMES DONT FORGET TO VALIDATE"/>
+                                 class="form-control"
+                                 validatorMessage="user is either illegal or blank or below 5 characters"/>
                 </label>
                 <h:message for="title"/>
             </p>
@@ -23,15 +25,20 @@
                 <label> password:
                     <h:inputText id="password"
                                  value="#{accountController.password}"
-                                 validatorMessage="must have at least something"/>
+                                 class="form-control"
+                                 validatorMessage="password is either illegal or blank or below 5 characters"/>
                 </label>
-                <h:message for="tags"/>
+                <h:message for="tags" class="label label-danger"/>
             </p>
-            
+           
+            <h:messages class="label label-danger" />
+           
              <p>
-                 <h:commandButton value="create account" action="#{accountController.createAccount()}"/>
+                 <h:commandButton value="create account" action="#{accountController.createAccount()}" class="btn btn-default"/>
             </p>
+        
         </h:form>
+        </b:container>
     </h:body>
 </html>
 

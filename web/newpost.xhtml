@@ -1,34 +1,44 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>Make a new post</title>
+  <title>Post a lotta stuff</title>
     </h:head>
     <h:body>
-        ohhhh here we go
+        <b:container>
+        
         <h1>Make a new post</h1>
+        <i>you can say what ever you like</i>
         <h:form>
             <p>
                 <label> Post title:
                     <h:inputText id="title"
                                  value="#{postController.title}"
-                                 validatorMessage="Must have a title"/>
+                                 class="form-control"
+                                 />
                 </label>
-                <h:message for="title"/>
+                
             </p>
             <p><label> Content
                     <h:inputText id="content"
                                  value="#{postController.content}"
-                                 validatorMessage="must have some content" />
+                                 class="form-control"
+                                  />
                 </label>
                 
             </p>
+            <b:alert >
+            <h:messages />
+            </b:alert>
              <p>
                 
-                 <h:commandButton value="Save" action="#{postController.createPost()}"/>
+                 <h:commandButton value="Save" action="#{postController.createPost()}" class="btn btn-default"/>
             </p>
         </h:form>
+        </b:container>
     </h:body>
 </html>
 

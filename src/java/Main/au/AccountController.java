@@ -14,6 +14,7 @@ import javax.naming.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.sql.*;
+import javax.validation.constraints.*;
 
 /**
  *
@@ -23,21 +24,26 @@ import javax.sql.*;
 @Named
 @RequestScoped
 public class AccountController {
+   @Size(min = 1)
+   @Pattern(regexp = "[a-zA-Z0-9]{5,}")
    private String username;
+   @Size(min = 1)
+   @Pattern(regexp = "[a-zA-Z0-9]{5,}")
    private String password;
    
    
    
-    public String loginContainer() {
+    public String loginContainer()  {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest)context.getExternalContext().getRequest();
         
         try {
-            System.out.println("we in the login container");
+               
+            
           request.login(username, password);
           
           return "zermon?faces-redirect=true";
-          
+            
         } catch (ServletException e) {
           showError("Incorrect username or password (or you may not have properly configured aipRealm)");
           

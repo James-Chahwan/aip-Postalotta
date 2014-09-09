@@ -22,14 +22,17 @@ import javax.naming.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.sql.*;
+import javax.validation.constraints.Size;
 
 @Named
 @RequestScoped
 public class PostController  {
-    
+    @Size(min = 1, message = "please enter a title, meow")
      private String title;
+    @Size(min = 1, message = "please enter some content ")
     private String content;
       private String UserName; 
+      private int likes;
   
 public ArrayList<Post> getAllPosts() throws DataStoreException {
 
@@ -40,9 +43,7 @@ public ArrayList<Post> getUserPosts() throws DataStoreException {
     String uname = context.getExternalContext().getUserPrincipal().getName();
         return new PostDAO().findUserPosts(uname);
 }
-public ArrayList<Post> getUserPost(int postid) throws DataStoreException {
-        return new PostDAO().findPost(postid);
-}
+
 
 public String createPost() throws DataStoreException
 {
@@ -56,11 +57,20 @@ public void deletePost(int postid) throws DataStoreException
 {
     new PostDAO().deletePost(postid);
 }
-
-public void editPost(int postid) throws DataStoreException
+public void likePost(int likeys, int postid)throws DataStoreException
 {
-    new PostDAO().editPost(title, content, postid);
+   ++likeys;
+    new PostDAO().likeyPost(likeys ,postid);
 }
+public String meh(){
+    System.out.println("this works");
+    return null;
+}
+
+//public void editPost(int postid) throws DataStoreException
+//{
+//    new PostDAO().editPost(title, content, postid);
+//}
 //   public Post getPost(){
 //       return post;
 //   }

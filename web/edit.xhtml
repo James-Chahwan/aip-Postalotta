@@ -1,22 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
- 
+      xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+  <title>Post a lotta stuff</title>
     </h:head>
-       <h:body>
+    <h:body>
+        <b:container>
         
         <h1>Make a edit</h1>
-        
+        this actually doesn't work couldn't get the post id to send properly and generate the edit page :(
         <h:form>
             <p>
-                <label> Post title:
+                <label>  title
                     <h:inputText id="title"
                                  value="#{postController.title}"
+                                 class="form-control"
                                  validatorMessage="Must have a title"/>
                 </label>
                 <h:message for="title"/>
@@ -24,15 +25,18 @@
             <p><label> Content
                     <h:inputText id="content"
                                  value="#{postController.content}"
+                                 class="form-control"
                                  validatorMessage="must have some content" />
                 </label>
                 
             </p>
              <p>
                 
-                 <h:commandButton value="Save" action="#{postController.editPost(param.index)}"/>
+                 <h:commandButton value="Save" action="#{postController.editPost(param.index)}" class="btn btn-default"/>
             </p>
             </h:form>
+        
+        </b:container>
        </h:body>
 </html>
 

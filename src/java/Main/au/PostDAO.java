@@ -18,16 +18,20 @@ public class PostDAO {
     // Configuration ------------------------------------
     
     private static final String JNDI_NAME = "jdbc/aip";
-    private static final String SELECT_POSTS = "SELECT POST.POSTID, POST.TITLE, POST.CONTENT, ACCOUNT.USERNAME" +
+    private static final String SELECT_POSTS = "SELECT POST.POSTID, POST.TITLE, POST.CONTENT,POST.LIKES, ACCOUNT.USERNAME" +
 "            FROM POST, ACCOUNT" +
-"            WHERE POST.USERID = ACCOUNT.USERID";
+"            WHERE POST.USERID = ACCOUNT.USERID"+
+            " ORDER BY POST.POSTID DESC";
      private static final String ALL_POSTS = SELECT_POSTS;
-     private static final String USER_POSTS = SELECT_POSTS + " AND ACCOUNT.USERNAME = ?";
+     private static final String USER_POSTS = "SELECT POST.POSTID, POST.TITLE, POST.CONTENT, POST.LIKES, ACCOUNT.USERNAME" +
+"            FROM POST, ACCOUNT" +
+"            WHERE POST.USERID = ACCOUNT.USERID AND ACCOUNT.USERNAME = ?";
      private static final String CREATE_POST = "INSERT INTO POST (TITLE, CONTENT, USERID) VALUES (?, ?, ?)";
      private static final String DELETE_POST = "DELETE FROM POST WHERE POSTID = ?";
-     private static final String UPDATE_POST = "UPDATE POST SET \"TITLE\" = ?, \"CONTENT\" = ?  WHERE POSTID = ?";      
-     private static final String USER_POST = "SELECT TITLE, CONTENT FROM POST WHERE POSTID = ?"; // for singular
-     
+    // it works if hardcoded for the id >.>
+     //private static final String UPDATE_POST = "UPDATE POST SET \"TITLE\" = ?, \"CONTENT\" = ?  WHERE POSTID = ?";      
+    private static final String LIKE_POST = "UPDATE POST SET LIKES = ? WHERE POSTID = ?";
+  
      private Post createRowDTO(ResultSet rs) throws SQLException
      {
              Post result = new Post();
@@ -35,6 +39,8 @@ public class PostDAO {
              result.setContent(rs.getString("content"));
              result.setUserName(rs.getString("username"));
              result.setId(rs.getInt("postid"));
+             result.setLikes(rs.getInt("LIKES"));
+             
             return result;
 
         }
@@ -89,30 +95,7 @@ public class PostDAO {
         return posts;
     }
            
-       public ArrayList<Post> findPost(int postid) throws DataStoreException {
-        ArrayList<Post> posts = new ArrayList<>();
-        try {
-            DataSource ds = InitialContext.doLookup(JNDI_NAME);
-            try (Connection conn = ds.getConnection();
-                    PreparedStatement ps = conn.prepareStatement(USER_POST)) {
-
-                ps.setInt(1, postid);
-
-                try (ResultSet rs = ps.executeQuery()) {
-                    while (rs.next()) {
-                        posts.add(createRowDTO(rs));
-                    }
-
-                }
-            } 
-        }
-            catch (NamingException | SQLException e) {
-                throw new DataStoreException(e);
-            }
-
-        
-        return posts;
-    }   
+      
        
        
        
@@ -149,7 +132,24 @@ public class PostDAO {
             throw new DataStoreException(e);
         }
     }
-    public void editPost(String title, String content, int postID)throws DataStoreException
+    
+    public void likeyPost(int current,int postID) throws DataStoreException
+    {
+        try
+        {
+             DataSource ds = InitialContext.doLookup(JNDI_NAME);
+            try (Connection conn = ds.getConnection();
+                 PreparedStatement ps = conn.prepareStatement(LIKE_POST)){
+                ps.setInt(1, current);
+                ps.setInt(2, postID);
+                ps.execute();
+            }
+        }
+        catch (NamingException | SQLException e) {
+            throw new DataStoreException(e);
+        }
+    }
+  /*  public void editPost(String title, String content, int postID)throws DataStoreException
     {
         try
         {
@@ -165,7 +165,7 @@ public class PostDAO {
         catch (NamingException | SQLException e) {
             throw new DataStoreException(e);
         }
-    }
+    } */
         // this is just for getting the userid from the db I could always put an id in the group realm then have look up's for name
         // but i only need id's for process in crud which could be batched processed later on
         // and the lookup for id should be indexed by default...

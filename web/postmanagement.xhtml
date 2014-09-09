@@ -1,15 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>post a lotta stuff </title>
+  <title>Post a lotta stuff</title>
     </h:head>
     <h:body>
+        <b:container>
+            <h1> manage all your posts </h1>
         <h:form>
-        <h:dataTable var="row"  value="#{postController.userPosts}">
+            <h:dataTable var="row"  value="#{postController.userPosts}" class="table">
             <h:column>
                 <f:facet name="header">
                   title
@@ -26,13 +28,15 @@
                 <f:facet name="header">
                   Modify/delete
                 </f:facet>
-                <h:link value="Edit" outcome="edit">
+                <h:link value="Edit" outcome="edit" class="btn btn-default">
                     <f:param name="index" value="#{row.id}"/>
                 </h:link>
-                <h:commandButton value="delete post" action="#{postController.deletePost(row.id)}"/>
+                 - <h:commandButton value="delete post" action="#{postController.deletePost(row.id)}" class="btn btn-default"/>
             </h:column>
         </h:dataTable>
         </h:form>
+            <h:link value="Back to main" outcome="zermon" />
+        </b:container>
     </h:body>
 </html>
 

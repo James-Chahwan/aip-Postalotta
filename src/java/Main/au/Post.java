@@ -20,6 +20,15 @@ public class Post implements Serializable  {
     private String content;
     private int USERID;
     private String UserName;
+    private int likes;
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
 
     public String getUserName() {
         return UserName;

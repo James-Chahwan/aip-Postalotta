@@ -1,36 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>System Login</title>
+  <title>Post a lotta stuff</title>
     </h:head>
     <h:body>
+        <b:container>
         <h1>Login Form</h1>
         <p>
-            for post a lotta 
-            things to add - Layout .... etc 
-            USER NAMES ARE CASE SENSITIVES WTF WTF
+            Please remember EVERYTHING IS CASE SENSITIVE :)
         </p>
         <h:form>
             <p>
                 <label>Username:
-                    <h:inputText value="#{accountController.username}"/>
+                    <h:inputText value="#{accountController.username}" class="form-control" validatorMessage="blank username field :("/>
                 </label>
             </p>
             <p>
                 <label>Password:
-                    <h:inputSecret value="#{accountController.password}"/>
+                    <h:inputSecret value="#{accountController.password}" class="form-control" validatorMessage="blank password field "/>
                 </label>
             </p>
-            <h:messages style="color: red;"/>
+            <b:alert >
+            <h:messages />
+            </b:alert>
             <p>
-                <h:commandButton value="Log In" action="#{accountController.loginContainer}"/>
-                <h:link outcome="newAccount.xhtml"> new account </h:link>
+                <h:commandButton value="Log In" action="#{accountController.loginContainer}" class="btn btn-default"/>
+                <h:link outcome="newAccount.xhtml" class="btn btn-default"> new account </h:link>
             </p>
         </h:form>
+        </b:container>
     </h:body>
 </html>
 

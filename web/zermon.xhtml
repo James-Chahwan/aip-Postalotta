@@ -1,48 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>post a lotta stuff </title>
+  <title>Post a lotta stuff</title>
     </h:head>
     <h:body>
-        <h:dataTable var="row"  value="#{postController.allPosts}">
-            <h:column>
-                <f:facet name="header">
-                  title
-                </f:facet>
-                <h:outputText value="#{row.title}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                     content 
-                </f:facet>
-                <h:outputText value="#{row.content}" /> 
-            </h:column>
-              <h:column>
-                <f:facet name="header">
-                     Username 
-                </f:facet>
-                  <h:outputText value="#{row.userName}" /> 
-            </h:column>
-           
-            
-        </h:dataTable>
-         
-        <p> Make new post here
-        manage your account
-        
-        </p>
-        <p> fix the layout </p>
-         and a log out button here
+        <b:container >
+            <b:navBar>
          <h:form>
-          <p>
-              <h:commandButton value="Log out" action="#{accountController.logoutContainer}"/>
-              <h:link outcome="newpost.xhtml"> new post  </h:link>
-              <h:link outcome="postmanagement.xhtml"> Manage your posts  </h:link>
-          </p>
-             </h:form>
+
+               
+              <h:link outcome="newpost.xhtml" class="btn btn-default"> new post  </h:link>
+              <h:link outcome="postmanagement.xhtml" class="btn btn-default"> Manage your posts  </h:link>
+              <h:commandButton value="Log out" action="#{accountController.logoutContainer}" class="btn btn-default"/>
+             </h:form></b:navBar>
+            <h1> Main page </h1>
+            <i>these are just peoples thoughts in text</i>
+            <h:form>
+            <ui:repeat var="row" value="#{postController.allPosts}" >
+                <b:panel title="#{row.title}" >
+                    
+                   
+                    "<h:outputText value="#{row.content}"/>" -  <i><h:outputText value="#{row.userName}" /></i>   
+                    <p></p>     <i class="glyphicon glyphicon-heart"></i> <h:outputText value="#{row.likes}" /> - <h:commandButton value="Like post" action="#{postController.likePost(row.likes,row.id)}" class="btn btn-default"/>
+                <p></p>
+                </b:panel>
+            </ui:repeat>
+      
+            </h:form>
+        
+        </b:container>
     </h:body>
 </html>
