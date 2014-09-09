@@ -29,7 +29,7 @@ public class PostDAO {
     private static final String ALL_POSTS = SELECT_POSTS;
     private static final String USER_POSTS = "SELECT POST.POSTID, POST.TITLE, POST.CONTENT, POST.LIKES, ACCOUNT.USERNAME"
             + "            FROM POST, ACCOUNT"
-            + "            WHERE POST.USERID = ACCOUNT.USERID AND ACCOUNT.USERNAME = ?";
+            + "            WHERE POST.USERID = ACCOUNT.USERID AND ACCOUNT.USERNAME = ? ORDER BY POST.POSTID DESC";
     private static final String CREATE_POST = "INSERT INTO POST (TITLE, CONTENT, USERID) VALUES (?, ?, ?)";
     private static final String DELETE_POST = "DELETE FROM POST WHERE POSTID = ?";
     // it works if hardcoded for the id >.>
